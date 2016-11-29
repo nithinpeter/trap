@@ -5,6 +5,7 @@ import {
     StyleSheet,
 } from 'react-native';
 import MapView from 'react-native-maps';
+import DATA from './data-source/index.json';
 
 class App extends Component {
     constructor(props) {
@@ -12,24 +13,25 @@ class App extends Component {
 
         this.state = {
             region: {
-                latitude: 37.78825,
-                longitude: -122.4324,
+                latitude: -33.868833,
+                longitude: 151.210778,
                 latitudeDelta: 0.0922,
                 longitudeDelta: 0.0421,
             },
+            markers: this._getMarkers()
         }
         this.onRegionChange = this.onRegionChange.bind(this);
     }
 
     componentDidMount() {
-        navigator.geolocation.getCurrentPosition(
-            (position) => {
-                var initialPosition = JSON.stringify(position);
-                this.setState({ initialPosition });
-            },
-            (error) => alert(JSON.stringify(error)),
-            { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
-        );
+        // navigator.geolocation.getCurrentPosition(
+        //     (position) => {
+        //         var initialPosition = JSON.stringify(position);
+        //         this.setState({ initialPosition });
+        //     },
+        //     (error) => alert(JSON.stringify(error)),
+        //     { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
+        // );
     }
 
 
@@ -43,10 +45,32 @@ class App extends Component {
                 <MapView
                     style={styles.map}
                     region={this.state.region}
-                    onRegionChange={this.onRegionChange}
-                    />
+                    onRegionChange={this.onRegionChange}>
+                    {
+                        this.state.markers.map((marker, index) => (
+                            <MapView.Marker
+                                key={index}
+                                coordinate={marker.latlng}/>
+                        ))
+                    }
+                </MapView>
             </View>
         );
+    }
+
+    _getMarkers() {
+        console.log(DATA.features)
+        const markers = DATA.features.map((item) => {
+            return {
+                latlng: {
+                    latitude: item.geometry.coordinates[1],
+                    longitude: item.geometry.coordinates[0],
+                },
+                properties: item.properties,    
+            };
+        })
+        console.log(markers);
+        return markers;
     }
 }
 
