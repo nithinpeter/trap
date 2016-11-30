@@ -30,6 +30,9 @@
     <meta-data
         android:name="com.google.android.geo.API_KEY"
         android:value="AIzaSyDnE7AQiV4XnpHWzqiKKn67OwBkw_PviOw"/>
+
+        <activity android:name="net.hockeyapp.android.UpdateActivity" />
+        <activity android:name="net.hockeyapp.android.FeedbackActivity" />
     </application>
 
 </manifest>

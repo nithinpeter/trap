@@ -7,8 +7,10 @@
     "test": "jest"
   },
   "dependencies": {
+    "invariant": "^2.2.2",
     "react": "15.3.2",
     "react-native": "0.37.0",
+    "react-native-hockeyapp": "^0.5.0",
     "react-native-maps": "^0.11.0"
   },
   "jest": {
