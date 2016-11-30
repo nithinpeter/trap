@@ -3,6 +3,7 @@ import {
     View,
     Text,
     StyleSheet,
+    Alert,
 } from 'react-native';
 import MapView from 'react-native-maps';
 import DATA from './data-source/index.json';

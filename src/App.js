@@ -18,6 +18,7 @@ class App extends Component {
             (position) => {
                 var initialPosition = JSON.stringify(position);
                 this.setState({ initialPosition });
+                alert(initialPosition);
             },
             (error) => alert(JSON.stringify(error)),
             { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
@@ -26,13 +27,12 @@ class App extends Component {
 
     render() {
         return (
-            
-                <MapComponent />
-            
+
+            <MapComponent />
+
         );
     }
 
-    
 }
 
 export default App;
