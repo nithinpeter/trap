@@ -4,6 +4,7 @@ import {
     Text,
     StyleSheet,
 } from 'react-native';
+import codePush from 'react-native-code-push';
 import MapComponent from './Map';
 
 
@@ -11,6 +12,9 @@ class App extends Component {
     constructor(props) {
         super(props);
 
+        this.state = {
+            initialPosition: {}
+        }
     }
 
     componentDidMount() {
@@ -28,11 +32,11 @@ class App extends Component {
     render() {
         return (
 
-            <MapComponent />
+            <MapComponent initialPosition={this.state.initialPosition}/>
 
         );
     }
 
 }
 
-export default App;
+export default codePush(App);

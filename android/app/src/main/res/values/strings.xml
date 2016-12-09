@@ -1,3 +1,4 @@
 <resources>
+    <string moduleConfig="true" name="reactNativeCodePush_androidDeploymentKey">3a71e5a2a5a947f699d6719f11162ecf</string>
     <string name="app_name">trap</string>
 </resources>

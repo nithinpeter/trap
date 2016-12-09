@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import {
     View,
     Text,
@@ -9,6 +9,10 @@ import MapView from 'react-native-maps';
 import DATA from './data-source/index.json';
 
 class MapComponent extends Component {
+    
+    static propTypes = {
+        initialPosition: PropTypes.object.isRequired
+    }
 
     constructor(props) {
         super(props);
